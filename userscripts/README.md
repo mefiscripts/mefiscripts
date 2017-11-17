@@ -1,0 +1,1 @@
+This directory is for userscripts installable by Greasemonkey.

@@ -1,0 +1,1 @@
+This directory is for bookmarklets installable as "javascript:" bookmarks.
