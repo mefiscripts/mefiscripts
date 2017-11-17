@@ -32,7 +32,7 @@ How do I contribute?
 
 * If you maintain a script or have permission from the author of a script, send a pull request to add it to this repo.
     * __Please indicate in the pull request whether you are the author or have permission from the author.__
-* If you have a problem with a script, [file an issue](issues) or send a [pull request](pulls).
+* If you have a problem with a script, [file an issue](https://github.com/mefiscripts/mefiscripts/issues) or send a [pull request](https://github.com/mefiscripts/mefiscripts/pulls).
 * If you're willing to help out, please __join this repo as a committer__ (see below).
 
 Who maintains this repo? (You do!)
@@ -48,12 +48,12 @@ to updates and helped out with issues and pull requests.
 __Submitting code:__ Committers who write code should keep branches on their own forks, and send pull requests for review by another committer,
 rather than pushing directly to master. Force pushes are blocked.
 
-This repo was started by [john hadron collider](https://www.metafilter.com/user/240049). I can't promise to act in any
+__Becoming a committer:__ This repo was started by [john hadron collider](https://www.metafilter.com/user/240049). I can't promise to act in any
 timely way on issues or pull requests. If you're willing to help out, please send me a Memail with your github handle
 and I will add you.
 
 License
 -------
 
-All contributions are copyright their authors and licensed under the [MIT license](LICENSE.txt),
+All contributions are copyright their authors and licensed under the [MIT license](LICENSE),
 meaning they can be freely copied and modified for any purpose.
