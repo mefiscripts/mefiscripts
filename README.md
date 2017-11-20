@@ -55,5 +55,7 @@ and I will add you.
 License
 -------
 
-All contributions are copyright their authors and licensed under the [MIT license](LICENSE),
-meaning they can be freely copied and modified for any purpose.
+All original contributions are copyright their authors and licensed under the [MIT license](LICENSE) unless otherwise noted.
+
+Some files were originally released under another license. Those files and their
+license terms are listed under [LICENSE-3RD-PARTY.txt](LICENSE-3RD-PARTY.txt).
