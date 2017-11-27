@@ -52,6 +52,13 @@ __Becoming a committer:__ This repo was started by [john hadron collider](https:
 timely way on issues or pull requests. If you're willing to help out, please send me a Memail with your github handle
 and I will add you.
 
+What about non-script utilities for MetaFilter?
+--------
+
+We don't host those, but here's some links to them, if you're interested:
+
+- [Decent Activity](https://chrome.google.com/webstore/detail/decent-activity/phjbedoddmlcjddhgippapnfpbmmpimg) - A Chrome extension that shows you recent comments (faved or no) from your MeFi contacts. You can build it from [source](http://github.com/jimkang/decent-activity) if you're not into using the Chrome Web Store.
+
 License
 -------
 
