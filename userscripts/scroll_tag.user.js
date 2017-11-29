@@ -23,7 +23,7 @@
 // * Indicate marked comment(s) for "recent activity" page
 // * Allow mark moving on "recent activity" page
 
-// Content Scope 
+// Content Scope
 var script = document.createElement('script');
 script.appendChild(document.createTextNode('('+ everything.toString() +')();'));
 script.setAttribute("type", "application/javascript");
@@ -57,7 +57,7 @@ var cookie_limit = 4016; // Maximum cookie size
 
 var thread_id;
 var markedcomment;
-var comments = new Array();
+var comments = [];
 var lastscroll;
 var nextshow;
 var markerdat;
@@ -94,15 +94,15 @@ function mst_initThread() {
     mst_initComments();
     mst_loadValue();
     mst_showJumper(0);
-    document.addEventListener('scroll', function() { mst_hideJumper() }, false);
-    document.addEventListener('scroll', function() { mst_findTopComment() }, false);
+    document.addEventListener('scroll', function() { mst_hideJumper(); }, false);
+    document.addEventListener('scroll', function() { mst_findTopComment(); }, false);
     mst_findTopComment(); // Just to get us started
 
     // Focusing the comment textarea should set the tag to the bottom
     var newcomment = document.getElementById('comment');
     if (newcomment) {
         var y = mst_documentHeight();
-        newcomment.addEventListener('focus', function() { mst_findTopComment(y) }, false);
+        newcomment.addEventListener('focus', function() { mst_findTopComment(y); }, false);
     }
 }
 
@@ -262,7 +262,7 @@ function mst_loadValue(t) {
                          a.id != 'prevDiv' && a.id != 'prevDiv2')) {
                 a = a.nextSibling;
             }
-            
+
             if (a) {
                 markedcomment = a;
                 mst_mark(a);
@@ -395,7 +395,7 @@ function mst_commentNumOf(c) {
             return i+1;
         }
     }
-    
+
     return 0;
 }
 
@@ -576,7 +576,7 @@ function mst_dropMarker(e) {
 
     mst_showJumper(0);
 
-    // Re-add the mousedown 
+    // Re-add the mousedown
     markerdat.g.addEventListener('mousedown', mst_grabMarker, false);
 
     // Remove mousemove/mouseup events
@@ -601,7 +601,7 @@ function mst_initRecentActivity() {
             var metabits = thisdiv.childNodes;
 
             for (var j=0; j<metabits.length; ++j) {
-                var bit = metabits[j]
+                var bit = metabits[j];
 
                 if ( bit.tagName && bit.tagName.toLowerCase() == 'a' ) {
                     var tid = mst_threadUniqName(bit.href);
@@ -620,8 +620,8 @@ function mst_initRecentActivity() {
                             newdiv.style.fontWeight = 'bold';
                             newdiv.innerHTML = thisdiv.innerHTML.replace(/ total comments\..*/, "") +
                                 " total comments.  " + newc + " since ";
-                            
-                            
+
+
                             var newcount = document.createElement('a');
                             newcount.target = bit.target;
                             newcount.href = url + '#' + marked.id;
@@ -629,8 +629,8 @@ function mst_initRecentActivity() {
                             newdiv.appendChild( newcount );
 
                             newdiv.innerHTML += ".  " +
-                                thisdiv.innerHTML.replace(/.* total comments\./, "")
-                            
+                                thisdiv.innerHTML.replace(/.* total comments\./, "");
+
                             thisdiv.parentNode.replaceChild(newdiv, thisdiv);
                         }
                         break;
@@ -652,7 +652,7 @@ function mst_getValue(thread_id) {
         subsite = parts[1];
         thread_num = parts[2];
     } else {
-        return
+        return;
     }
 
     // Get the cookie for this subsite
@@ -701,7 +701,7 @@ function mst_setValue(thread_id, comment_id, comment_num) {
         subsite = parts[1];
         thread_num = parts[2];
     } else {
-        return
+        return;
     }
 
     // uuencode the three parts
@@ -732,7 +732,7 @@ function mst_setValue(thread_id, comment_id, comment_num) {
     if (cdata.length > cookie_limit - subsite.length - 5) {
         cdata = cdata.substr(0, Math.floor(cookie_limit/10)*10);
     }
-    
+
     Cookie.set("mst_" + subsite, cdata, 10*365*24, undefined, "metafilter.com");
 }
 var base64chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_/=";
@@ -741,7 +741,7 @@ function mst_toBase64(n, size) {
     for (var i = 0; i < size; ++i) {
         var digit = n % 64;
         result = base64chars.charAt(digit) + result;
-        n = (n - digit) / 64; 
+        n = (n - digit) / 64;
     }
     return result;
 }
@@ -757,29 +757,28 @@ function mst_fromBase64(n) {
 
 /*****************************************************************************
  * Modified from cookie-js 0.4 by Maxime Haineault (max@centdessin.com)
- * <http://code.google.com/p/cookie-js/> 
+ * <http://code.google.com/p/cookie-js/>
  */
-Cookie = {      
+Cookie = {
     /** Get a cookie's value */
     get: function(key) {
             // Still not sure that "[a-zA-Z0-9.()=|%/_]+($|;)" match *all* allowed characters in cookies
             tmp =  document.cookie.match((new RegExp(key +'=[a-zA-Z0-9.()=|%/_]+($|;)','g')));
             if(!tmp || !tmp[0]) return null;
             else return unescape(tmp[0].substring(key.length+1,tmp[0].length).replace(';','')) || null;
-            
-    },      
-    
+    },
+
     /** Set a cookie */
     set: function(key, value, ttl, path, domain, secure) {
             cookie = [key+'='+    escape(value),
                               'path='+    ((!path   || path=='')  ? '/' : path),
                               'domain='+  ((!domain || domain=='')?  window.location.host : domain)];
-            
+
             if (ttl)         cookie.push('Expires='+ Cookie.hoursToExpireDate(ttl));
             if (secure)      cookie.push('secure');
             return document.cookie = cookie.join('; ');
     },
-    
+
     /** Unset a cookie */
     unset: function(key, path, domain) {
             path   = (!path   || typeof path   != 'string') ? '' : path;
@@ -793,10 +792,10 @@ Cookie = {
             else {
                     now = new Date();
                     now.setTime(now.getTime() + (parseInt(ttl) * 60 * 60 * 1000));
-                    return now.toGMTString();                       
+                    return now.toGMTString();
             }
     }
-}
+};
 /****************************************************************************/
 
 //
