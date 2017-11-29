@@ -4,6 +4,8 @@
 // @description    Tracks your last-read comment in threads, and allows you to jump back to it easily.
 // @include        http://metafilter.com/*
 // @include        http://*.metafilter.com/*
+// @include        https://metafilter.com/*
+// @include        https://*.metafilter.com/*
 // ==/UserScript==
 //
 // OPERA USERS:
@@ -13,6 +15,7 @@
 //
 // DONE 2011-12-07
 // * Compressed cookie storage
+// * 2017-11-28 - updated for https, by pronoiac
 //
 // TODO
 // * Use jQuery more widely
@@ -154,9 +157,9 @@ function mst_scrollBottom() {
 // Returns a uniq name of the thread: "$subdomain$threadid"
 //
 function mst_threadUniqName(url) {
-    var urlm = url.match(/^http:\/\/([^\/]*\.)?metafilter.com\/(\d+)\//);
+    var urlm = url.match(/^http(s?):\/\/([^\/]*\.)?metafilter.com\/(\d+)\//);
     if (urlm)
-        return urlm[1] + urlm[2];
+        return urlm[2] + urlm[3];
     return "";
 }
 
