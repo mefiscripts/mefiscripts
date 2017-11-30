@@ -1,10 +1,15 @@
 // ==UserScript==
-// @name          Metafilter MultiFavorited Multiwidth - November Experiment
+// @name          Metafilter MultiFavorited Multiwidth
 // @namespace      http://www.metafilter.com/user/25038
-// @description   Code adjusted to deal with the "November Experiment" (see http://metatalk.metafilter.com/18396/November-is-National-Lets-Try-Obscuring-Favorite-Counts-Month)
+// @description    Highlights multifavorited comments with bars whose width indicates the number of favorites
 // @include        http://www.metafilter.com/*
 // @include        http://*.metafilter.com/*
+// @include        https://www.metafilter.com/*
+// @include        https://*.metafilter.com/*
 // ==/UserScript==
+//
+// Last updated by Pronoiac, for https.
+// Previous work: Deathalicious and flatluigi.
 
 (function () {
 
