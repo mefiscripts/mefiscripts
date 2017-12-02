@@ -1,4 +1,4 @@
-Due to their nature these web-extensions can't simply be installed from Github like the userscripts. Instead, here's a table of links to the Chrome and Mozilla sites for each respective extension. Where applicable links to the source code on Github have also been included.
+Due to their nature these browser extensions can't simply be installed from Github like the userscripts. Instead, here's a table of links to the Chrome and Mozilla sites for each respective extension. Where applicable links to the source code on Github have also been included.
 
 | Script | Description |
 | --- | --- |
