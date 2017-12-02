@@ -1,0 +1,8 @@
+Due to their nature these browser extensions can't simply be installed from Github like the userscripts. Instead, here's a table of links to the Chrome and Mozilla sites for each respective extension. Where applicable links to the source code on Github have also been included.
+
+| Script | Description |
+| --- | --- |
+| [Decent Activity](https://chrome.google.com/webstore/detail/decent-activity/phjbedoddmlcjddhgippapnfpbmmpimg) | A Chrome extension that shows you recent comments (faved or no) from your MeFi contacts. You can build it from [source](http://github.com/jimkang/decent-activity) if you're not into using the Chrome Web Store. |
+| [metafilter-navigator](https://addons.mozilla.org/en-US/firefox/addon/metafilter-navigator/) | A rewrite of the original navigator script. Adds navigation links for authors with more than one comment. Highlights your comments. Firefox/Chrome. ([source](https://github.com/andywillis/metafilter-navigator)) |
+| [metafilter-favisualised](https://addons.mozilla.org/en-US/firefox/addon/metafilter-favisualised/) | A rewrite of the MultiFavorited Multiwidth script. Adds visual cues to comments to show the number of favourites. Works in all areas of the site that has comments. Firefox/Chrome. ([source](https://github.com/andywillis/metafilter-favisualised)) |
+| [metafilter-favouriteers](https://addons.mozilla.org/en-US/firefox/addon/metafilter-favouriteers/) | A rewrite of the Howl's Of Outrage script. Click on the favourites link to see a list of people (up to 150 due to display limitations) who favourited the comment. Firefox/Chrome. ([source](https://github.com/andywillis/metafilter-favouriteers))|
