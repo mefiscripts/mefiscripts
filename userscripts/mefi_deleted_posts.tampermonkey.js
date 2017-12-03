@@ -5,7 +5,8 @@
 // @version         0.2.2
 // @require         https://code.jquery.com/jquery-1.12.4.min.js#sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=
 // @include         https://*.metafilter.com/*
-// @exclude         http://music.metafilter.com/
+// @exclude         https://music.metafilter.com/*
+// @exclude         http://*
 // ==/UserScript==
 
 (function() {
