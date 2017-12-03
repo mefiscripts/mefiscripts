@@ -1,14 +1,54 @@
 // ==UserScript==
-// @name           Mefi deleted posts
+// @name           Mefi deleted posts (restyled)
 // @namespace      http://plutor.org/
 // @description    Shows deleted posts on the Metafilter front page
+// @homepage       https://github.com/mefiscripts/mefiscripts
 // @include        http://*.metafilter.com/
 // @include        http://*.metafilter.com/daily.mefi/*
 // @include        http://*.metafilter.com/index.cfm?*
 // @include        http://*.metafilter.com/home/recentposts
+// @include        https://*.metafilter.com/
+// @include        https://*.metafilter.com/daily.mefi/*
+// @include        https://*.metafilter.com/index.cfm?*
+// @include        https://*.metafilter.com/home/recentposts
+// @match          http://*.metafilter.com/
+// @match          http://*.metafilter.com/daily.mefi/*
+// @match          http://*.metafilter.com/index.cfm?*
+// @match          http://*.metafilter.com/home/recentposts
+// @match          https://*.metafilter.com/
+// @match          https://*.metafilter.com/daily.mefi/*
+// @match          https://*.metafilter.com/index.cfm?*
+// @match          https://*.metafilter.com/home/recentposts
 // @exclude        http://music.metafilter.com/
 // @exclude        http://music.metafilter.com/*
+// @exclude        https://music.metafilter.com/
+// @exclude        https://music.metafilter.com/*
+// @exclude        http://fanfare.metafilter.com/
+// @exclude        http://fanfare.metafilter.com/*
+// @exclude        https://fanfare.metafilter.com/
+// @exclude        https://fanfare.metafilter.com/*
+// @version        0.0.1.20171201
+// @grant          none
 // ==/UserScript==
+//
+// Modified by rangefinder 1.4.  Major changes as of 2017-12-01:
+// * Restored showing OP username instead of first commenter (fix for Modern theme).
+// * Added https support.
+// * Restyled appearance of deleted post section / deletion reason.
+//
+// Works with Tampermonkey and Greasemonkey 3.
+//
+// Includes title fix from neckro23 - 2013-01-13:
+// https://metatalk.metafilter.com/22334/Morgan-Freeman-doesnt-die-like-the-rest-of-us#1049158
+//
+// Originally authored by Plutor; based on the 2013-01-12 version:
+// http://plutor.org/blog/code/greasemonkey/metafilter_deleted_posts/
+//
+// From Plutor: 
+// "All of my scripts are released with an MIT license (or at least that's 
+// what I meant to do), meaning anyone can do anything with them they want."
+// https://metatalk.metafilter.com/24606/mefiscripts-github-repository#1289414
+// https://opensource.org/licenses/MIT
 //
 // DONE 2011-05-08
 // * Use store.js for storage
@@ -145,13 +185,13 @@ function mdp_getcontent(threadid) {
         mdp_log("Got post text: '" + post + "'");
 
         // Get the footer
-        var foot = ""
-        matches = data.match(/<div class="copy"[^>]*>([\s\S]*?)<span class="smallcopy"[^>]*>([\s\S]*?)<\/span>/);
+        var foot = "";
+        matches = data.match(/<div class="copy"[^>]*>([\s\S]*?)<span class="smallcopy postbyline"[^>]*>([\s\S]*?)<\/span>/); // class 'postbyline' for Modern theme
         if (matches && matches.length == 3) foot = matches[2];
         mdp_log("Got foot text: '" + foot + "'");
 
         // Get the stamp
-        var stamp = ""
+        var stamp = "";
         matches = data.match(/<span class="smallcopy"[^>]*>\S* \d*, \d* (\d*:\d* [AP]M)/);
         if (matches && matches.length == 2) stamp = matches[1];
         mdp_log("Got stamp: '" + stamp + "'");
@@ -175,7 +215,7 @@ function mdp_getcontent(threadid) {
         else if (JSON && JSON.stringify)
             contentSrc = JSON.stringify(content);
         else
-            return
+            return;
 
         store.set('content_' + document.domain + '_' + threadid, contentSrc);
     }, "html");
@@ -200,25 +240,25 @@ function mdp_replace(threadid, content) {
 
     // Build the post and insert it into the dom
     var postcontent = '<div class="deletedpost_show">'
-                    + '<div class="posttitle front"><a href="' + content.url + '" style="color: #d77 !important">'
-                    + content.title + '</a></div>' + content.content
+                    + '<div class="posttitle front"><a style="color: #bbb !important" href="' // post title color:  originally #d77
+                    + content.url + '">' + content.title + '</a></div>'
+                    + content.content
                     + '<span class="smallcopy">' + content.foot + '</span>'
-                    + '<br><br>'
-                    + '<span class="smallcopy">' + content.reason + '</span></div>'
+                    + '<p class="smallcopy" style="border:2px solid #999;margin-left:10px;padding:9px;-moz-box-shadow:3px 3px 3px #999;-webkit-box-shadow:3px 3px 3px #999;box-shadow: 3px 3px 3px #999;">' + content.reason + '</p></div>'
                     + '<div class="deletedpost_hide">Deleted thread: <a href="' + content.url + '">' + threadid + '</a></div>';
 
     $("#deletedpost_" + threadid)
         .empty().append(postcontent)
         .css( {
             background: 'transparent url(' + deletedbar + ') repeat-y left',
-            color: '#f99',
+            color: '#bbb', // font color: originally #f99
             padding: '0.5em 0.5em 0.5em 1em'
         } )
-        .find("span[class=smallcopy]").css('color', '#f99');
+        .find("span[class=smallcopy]").css('color', '#bbb'); // deletion reason font color: originally #f99
 
     $("#deletedpost_" + threadid)
-        .find("div[class~=posttitle]").css({
-            'margin': '0 0 5px 0'
+         .find("div[class=posttitle front]").css({
+            'margin-left': '0'
         });
 
     // Add the hide button
