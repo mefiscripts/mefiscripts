@@ -1,12 +1,43 @@
 // ==UserScript==
-// @name           Mefiquote (updated for redesign)
+// @name           Mefiquote (for Modern themes)
 // @namespace      http://plutor.org/
-// @description    Adds "quote" links to Metafilter comments. Updated for the 2014 redesign.
+// @description    Adds customizable "quote" links to Metafilter comments. Updated for the 2014 redesign.
+// @homepageURL    https://github.com/mefiscripts/mefiscripts
 // @include        http://metafilter.com/*
 // @include        http://*.metafilter.com/*
-// @version 0.0.1.20141102043946
+// @include        https://metafilter.com/*
+// @include        https://*.metafilter.com/*
+// @match          http://metafilter.com/*
+// @match          http://*.metafilter.com/*
+// @match          https://metafilter.com/*
+// @match          https://*.metafilter.com/*
+// @version        0.0.1.20171201
+// @grant          none
 // ==/UserScript==
-
+//
+// To customize the quote link text or the quoting pattern, go to your user 
+//  preferences page (https://www.metafilter.com/contribute/customize.cfm) and 
+//  scroll down. There'll be a new "MefiQuote preferences" section where you
+//  can edit and save your changes (stored in a cookie).
+//
+// 2017-12-01 (edits by rangefinder 1.4)
+// * Added https support. 
+// * Added <code> tags around quote pattern options.
+//
+// Works with:
+// * Tampermonkey; Greasemonkey 3 and 4
+// * Modern themes only (not Classic or Plain)
+//
+// Based on this version with Modern fix from savetheclocktower 2014-10-01,
+// uploaded by Rhaomi:
+// https://metatalk.metafilter.com/23449/General-call-to-scriptmakers#1172554
+// https://greasyfork.org/en/scripts/6224-mefiquote-updated-for-redesign
+//
+// Originally authored by Plutor:
+// "All of my scripts are released with an MIT license (or at least that's 
+// what I meant to do), meaning anyone can do anything with them they want."
+// https://metatalk.metafilter.com/24606/mefiscripts-github-repository#1289414
+// https://opensource.org/licenses/MIT
 //
 // DONE 2011-02-23
 // * Use MeFi's own jquery object (properly this time)
@@ -176,7 +207,7 @@ function everything() {
     function mq_init_preferences() {
         var inputs = $('input');
         var submit_button = $('input[type=submit]').filter( function() {
-            return $(this).val().match(/Save your Preferences/);
+            return $(this).val().match(/Save Your Preferences/);
         } );
         if (inputs.length < 1 || submit_button.length < 1) return;
 
@@ -188,7 +219,7 @@ function everything() {
                 + mq_escape(BUTTONTEXT)
                 + '" maxlength="200" size="30" onfocus="this.style.background=\'#ddd\';" onblur="this.style.background=\'#ccc\';" /><br />'
                 + '<label for="mq_quoteformat">Quote format:<br />'
-                + '<span class="smallcopy" style="text-align: left">%i - commenter\'s user id<br />%l - url of comment<br />%n - commenter\'s name<br />%p - url of commenter\'s profile<br />%q - comment text<br />%% - an actual percent ("%")</span></label>'
+                + '<span class="smallcopy" style="text-align: left;"><code>%i</code> - commenter\'s user id<br /><code>%l</code> - url of comment<br /><code>%n</code> - commenter\'s name<br /><code>%p</code> - url of commenter\'s profile<br /><code>%q</code> - comment text<br /><code>%%</code> - an actual percent ("%")</span></label>'
                 + '<textarea name="mq_quoteformat" id="mq_quoteformat" cols="60" rows="8" wrap="VIRTUAL" style="width:400px;height:200px;" onfocus="this.style.background=\'#ddd\';" onblur="this.style.background=\'#ccc\';">'
                 + mq_escape(QUOTEFORMAT) 
                 + '</textarea>'
@@ -275,7 +306,7 @@ function everything() {
                         return now.toGMTString();                       
                 }
         }
-    }
+    };
 
     function mq_init() {
         mq_load_preferences();
