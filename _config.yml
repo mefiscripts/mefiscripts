@@ -1,0 +1,6 @@
+# Site settings
+title: MefiScripts
+description: Community-built scripts for customizing your experience of MetaFilter.com
+
+# Build settings
+markdown: kramdown
