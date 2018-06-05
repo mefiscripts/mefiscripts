@@ -2,6 +2,7 @@ Due to their nature these browser extensions can't simply be installed from Gith
 
 | Script | Description |
 | --- | --- |
+| Calm MetaFilter | Guides you through a deep breathing exercise before confirming your comment. Helpful for avoiding typos and needless arguing. [Firefox](https://addons.mozilla.org/en-US/firefox/addon/calm-metafilter/)/[Chrome](https://chrome.google.com/webstore/detail/calm-metafilter/geakbgajoebbgeebhochaodlbajogmnn). ([source](http://github.com/emanuelfeld/calm-metafilter)) |
 | [Decent Activity](https://chrome.google.com/webstore/detail/decent-activity/phjbedoddmlcjddhgippapnfpbmmpimg) | A Chrome extension that shows you recent comments (faved or no) from your MeFi contacts. ([source](http://github.com/jimkang/decent-activity)) |
 | [metafilter-navigator](https://addons.mozilla.org/en-US/firefox/addon/metafilter-navigator/) | A rewrite of the original navigator script. Adds navigation links for authors with more than one comment. Highlights your comments. Firefox/Chrome. ([source](https://github.com/andywillis/metafilter-navigator)) |
 | [metafilter-favisualised](https://addons.mozilla.org/en-US/firefox/addon/metafilter-favisualised/) | A rewrite of the MultiFavorited Multiwidth script. Adds visual cues to comments to show the number of favourites. Works in all areas of the site that has comments. Firefox/Chrome. ([source](https://github.com/andywillis/metafilter-favisualised)) |
