@@ -48,7 +48,7 @@ function getDomain() {
     if (href.match(/amazon\./i)) {
       asin = getASIN(href);
       if (asin != null) {
-        allLinks[i].setAttribute("href", "https://smile."+linkDomain+"/o/ASIN/" + asin + "/ref=nosim/"+affID);
+        allLinks[i].setAttribute("href", "https://www."+linkDomain+"/o/ASIN/" + asin + "/ref=nosim/"+affID);
       }
     }
   }
