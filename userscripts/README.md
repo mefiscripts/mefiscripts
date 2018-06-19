@@ -5,6 +5,7 @@ To install, click the script name and click "Raw".
 | Script | Description |
 | --- | --- |
 | [Fuzzy Hearts](https://github.com/mefiscripts/mefiscripts/tree/master/userscripts/fuzzo.user.js) | Change "nn favorites" to other stuff |
+| [MeFi Comment Audit](https://github.com/mefiscripts/mefiscripts/tree/master/userscripts/meficommentstats.user.js) | Tallies how much of a thread is you (by comment count and length) |
 | [Metafilter MultiFavorited Multiwidth](https://github.com/mefiscripts/mefiscripts/tree/master/userscripts/multifavorited_multiwidth.user.js) | Highlights multifavorited comments with bars whose width indicates the number of favorites |
 | [MetaFilter Scroll Tag](https://github.com/mefiscripts/mefiscripts/tree/master/userscripts/scroll_tag.user.js) | Tracks your last-read comment in threads, and allows you to jump back to it easily |
 | [MyMefi Redirect](https://github.com/mefiscripts/mefiscripts/tree/master/userscripts/tomymefi.user.js) | Redirect from the Metafilter homepage to MyMefi when logged in |
