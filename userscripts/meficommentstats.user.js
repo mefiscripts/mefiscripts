@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         MeFi Comment Audit
 // @namespace    https://github.com/emanuelfeld
-// @version      0.3
+// @version      0.4
 // @description  How much are you and others commenting in a thread?
 // @author       Emanuel Feld
 // @include      http://*.metafilter.com/*
@@ -42,7 +42,7 @@
 
   function updateStatistics (commentIndex = 0) {
     let comments = document.querySelectorAll('div.comments');
-    let commentAuthors = document.querySelectorAll('div.comments > .smallcopy > a:first-child');
+    let commentAuthors = document.querySelectorAll('#posts > div.comments > .smallcopy > a:first-child');
 
     if (!userCommentCount.hasOwnProperty(authorId)) {
       userCommentCount[authorId] = 0;
